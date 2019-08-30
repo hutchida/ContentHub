@@ -1,40 +1,177 @@
 [
-    {
-        "Date": "26072019",
-        "Arbitration": "4",
-        "Banking and Finance": "0",
-        "Commercial": "2",
-        "Competition": "2",
-        "Construction": "7",
-        "Corporate": "22",
-        "Corporate Crime": "4",
-        "Dispute Resolution": "17",
-        "Employment": "6",
-        "Energy": "1",
-        "Environment": "2",
-        "Family": "0",
-        "Financial Services": "44",
-        "Immigration": "0",
-        "Information Law": "7",
-        "In-House Advisor": "0",
-        "Insurance and Reinsurance": "1",
-        "IP": "1",
-        "Life Sciences": "0",
-        "Local Government": "5",
-        "Pensions": "3",
-        "Personal Injury": "1",
-        "Planning": "0",
-        "Practice Compliance": "0",
-        "Practice Management": "0",
-        "Private Client": "3",
-        "Property": "6",
-        "Property Disputes": "0",
-        "Public Law": "3",
-        "Restructuring and Insolvency": "0",
-        "Risk and Compliance": "3",
-        "Share Incentives": "0",
-        "Tax": "8",
-        "TMT": "1",
-        "Wills and Probate": "0"
+	{
+		"Date": "26072019",
+		"PA": "Arbitration",
+		"Total": 4
+	},
+	{
+		"Date": "26072019",
+		"PA": "Banking and Finance",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Commercial",
+		"Total": 2
+	},
+	{
+		"Date": "26072019",
+		"PA": "Competition",
+		"Total": 2
+	},
+	{
+		"Date": "26072019",
+		"PA": "Construction",
+		"Total": 7
+	},
+	{
+		"Date": "26072019",
+		"PA": "Corporate",
+		"Total": 22
+	},
+	{
+		"Date": "26072019",
+		"PA": "Corporate Crime",
+		"Total": 4
+	},
+	{
+		"Date": "26072019",
+		"PA": "Dispute Resolution",
+		"Total": 17
+	},
+	{
+		"Date": "26072019",
+		"PA": "Employment",
+		"Total": 6
+	},
+	{
+		"Date": "26072019",
+		"PA": "Energy",
+		"Total": 1
+	},
+	{
+		"Date": "26072019",
+		"PA": "Environment",
+		"Total": 2
+	},
+	{
+		"Date": "26072019",
+		"PA": "Family",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Financial Services",
+		"Total": 44
+	},
+	{
+		"Date": "26072019",
+		"PA": "Immigration",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Information Law",
+		"Total": 7
+	},
+	{
+		"Date": "26072019",
+		"PA": "In-House Advisor",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Insurance and Reinsurance",
+		"Total": 1
+	},
+	{
+		"Date": "26072019",
+		"PA": "IP",
+		"Total": 1
+	},
+	{
+		"Date": "26072019",
+		"PA": "Life Sciences",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Local Government",
+		"Total": 5
+	},
+	{
+		"Date": "26072019",
+		"PA": "Pensions",
+		"Total": 3
+	},
+	{
+		"Date": "26072019",
+		"PA": "Personal Injury",
+		"Total": 1
+	},
+	{
+		"Date": "26072019",
+		"PA": "Planning",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Practice Compliance",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Practice Management",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Private Client",
+		"Total": 3
+	},
+	{
+		"Date": "26072019",
+		"PA": "Property",
+		"Total": 6
+	},
+	{
+		"Date": "26072019",
+		"PA": "Property Disputes",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Public Law",
+		"Total": 3
+	},
+	{
+		"Date": "26072019",
+		"PA": "Restructuring and Insolvency",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Risk and Compliance",
+		"Total": 3
+	},
+	{
+		"Date": "26072019",
+		"PA": "Share Incentives",
+		"Total": 0
+	},
+	{
+		"Date": "26072019",
+		"PA": "Tax",
+		"Total": 8
+	},
+	{
+		"Date": "26072019",
+		"PA": "TMT",
+		"Total": 1
+	},
+	{
+		"Date": "26072019",
+		"PA": "Wills and Probate",
+		"Total": 0
     }
 ]

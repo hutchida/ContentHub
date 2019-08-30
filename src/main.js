@@ -7,7 +7,6 @@ import HighchartsVue from 'highcharts-vue';
 import infiniteScroll from 'vue-infinite-scroll';
 import App from './App';
 import router from './router';
-
 Vue.config.productionTip = false;
 Vue.use(HighchartsVue)
 Vue.use(BootstrapVue);

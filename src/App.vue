@@ -22,6 +22,10 @@
   import Chart from './components/Chart.vue'
   import StockChart from './components/StockChart'
   import MapChart from './components/MapChart'
+  
+  
+  
+  
   export default {
   name: 'app',
   data () {
