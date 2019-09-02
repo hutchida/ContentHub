@@ -1,5 +1,8 @@
 <template>
-  <div class="chartElem">
+  <div class="chartElem">    
+  <h2><b>Under Review Summary</b></h2>
+  <hr />
+  <div class="container"><p>Click on the bars below to expand the practice area.</p></div>
     <div class="row">
       <highcharts class="chart" :options="chartOptions" :updateArgs="updateArgs"></highcharts>
       
@@ -10,13 +13,16 @@
 
 <script>
   import axios from "axios";
-  var Data = [153, 4, 0, 2, 2, 7, 22, 4, 17, 6, 1, 2, 0, 44, 0, 7, 0, 1, 1, 0, 5, 3, 1, 0, 0, 0, 3, 6, 0, 3, 0, 3, 0, 8, 1, 0];
-  
-  
+  //var Data = [153, 4, 0, 2, 2, 7, 22, 4, 17, 6, 1, 2, 0, 44, 0, 7, 0, 1, 1, 0, 5, 3, 1, 0, 0, 0, 3, 6, 0, 3, 0, 3, 0, 8, 1, 0];
+
   export default {
   data () {
   return {
-  todosList: [],
+  title: '',
+  chartType: 'Spline',
+  seriesColor: '#6fcd98',
+  colorInputIsSupported: null,
+  animationDuration: 1000,
   updateArgs: [true, true, {duration: 1000}],
   chartOptions: {
   chart: {
@@ -25,13 +31,69 @@
   width: 800,
   },
   
-  
+  title: {
+  text: ''
+  },
+  xAxis: {
+  categories: [],
+  title: {
+  text: null
+  }
+  },
+  yAxis: {
+  min: 0,
+  title: {
+  text: 'number of docs',
+  align: 'high'
+  },
+  labels: {
+  overflow: 'justify'
+  }
+  },
+  tooltip: {
+  valueSuffix: ' docs'
+  },
+  plotOptions: {
+  bar: {
+  dataLabels: {
+  enabled: true
+  }
+  },
+  series: {
+  cursor: 'pointer',
+  point: {
+  events: {
+  click: function () {
+  var x = document.getElementById(this.category);
+  if (x.classList.contains('collapse'))  {
+  x.className = 'collapse.show';
+  } else {
+  x.className = 'collapse';
+  }
+  }
+  }
+  }
+  }
+  },
+  legend: {
+    title: 'Number of documents currently under review',
+  enabled: true,
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'top',
+  x: -40,
+  y: 80,
+  floating: true,
+  borderWidth: 1,
+  backgroundColor: ('#FFFFFF'),
+  shadow: true
+  },
+  credits: {
+  enabled: false
+  },
   series: [{
   name: 'Number of Documents Currently Under Review',
-  
-  data: Totals
-  }]
-  
+  data: []}]
   
   }
   }
@@ -39,23 +101,15 @@
   
   },
   async mounted() {
-  const url = 'http://hutchida.com/lnpsl/ContentHub/json/data.json'
-  const { data } = await axios.get(url)
-  this.todosList = [...data].slice(0, 10)
-  var i = 0
-  var PAs = [];
-  var Totals = [];
-  for (i = 0; i < data.length; i++){
-  PAs.push(data[i].PA);
-  Totals.push(data[i].Total);
+    const { data } = await axios.get('http://hutchida.com/lnpsl/ContentHub/json/data.json')
+    this.todosList = [...data].slice(0, 10)
+    //this.chartOptions.series.data = data.map(item => item.Total)
+    this.chartOptions.series[0].data  = data.map(item => item.Total)
+    this.chartOptions.xAxis.categories = data.map(item => item.PA)
+  }, 
+  
   }
-  console.log(data.length)
-  console.log(PAs)
-  console.log(Totals)
-  console.log(Data)
-  return Totals
-  }
-  }  
+  
 
 </script>
 

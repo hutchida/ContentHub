@@ -4,9 +4,8 @@
       <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
         <img class="logo-vue" src="./assets/logo.png" alt="Vue Logo"> 
     </div>-->
-    <h2>Content Hub: <b>Under Review Summary</b></h2>
-    <hr style="width: 200px; margin: 60px auto;">
-      <div class="container"><p>Click on the bars below to expand the practice area.</p></div>
+    <h1>ContentHub</h1>
+    
       <!-- <div class="button-grp">
         <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Chart</button>
           <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Stock Chart</button>
