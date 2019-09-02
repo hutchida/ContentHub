@@ -7,10 +7,13 @@ import HighchartsVue from 'highcharts-vue';
 import infiniteScroll from 'vue-infinite-scroll';
 import App from './App';
 import router from './router';
+import VueJsonToCsv from 'vue-json-to-csv'
+
 Vue.config.productionTip = false;
-Vue.use(HighchartsVue)
+Vue.use(HighchartsVue);
 Vue.use(BootstrapVue);
 Vue.use(infiniteScroll);
+Vue.component('vue-json-to-csv', VueJsonToCsv);
 
 /* eslint-disable no-new */
 new Vue({

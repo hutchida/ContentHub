@@ -4,6 +4,16 @@
   <hr />
   <div class="container"><p>Click on the bars below to expand the practice area.</p></div>
     <div class="row">
+      
+
+<vue-json-to-csv 
+    :json-data="[ { name: 'Joe', surname: 'Roe' }, { name: 'John', surname: 'Doé' } ]"
+    :csv-title="'UnderReview'" >
+    <button> 
+      Download data
+    </button> 
+</vue-json-to-csv>
+
       <highcharts class="chart" :options="chartOptions" :updateArgs="updateArgs"></highcharts>
       
     </div>
@@ -14,7 +24,7 @@
 <script>
   import axios from "axios";
   //var Data = [153, 4, 0, 2, 2, 7, 22, 4, 17, 6, 1, 2, 0, 44, 0, 7, 0, 1, 1, 0, 5, 3, 1, 0, 0, 0, 3, 6, 0, 3, 0, 3, 0, 8, 1, 0];
-
+//const apples="[ { name: 'Joe', surname: 'Roe' }, { name: 'John', surname: 'Doé' } ]"
   export default {
   data () {
   return {
@@ -104,8 +114,11 @@
     const { data } = await axios.get('http://hutchida.com/lnpsl/ContentHub/json/data.json')
     this.todosList = [...data].slice(0, 10)
     //this.chartOptions.series.data = data.map(item => item.Total)
+
     this.chartOptions.series[0].data  = data.map(item => item.Total)
     this.chartOptions.xAxis.categories = data.map(item => item.PA)
+    
+    //jsonData = [data]
   }, 
   
   }
