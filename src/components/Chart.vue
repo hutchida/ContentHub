@@ -1,39 +1,63 @@
 <template>
   <div class="chartElem">    
-  <h2><b>Under Review Summary</b></h2>
-  <hr />
-  <div class="container"><p>Click on the bars below to expand the practice area.</p></div>
-    <div class="row">
-      
-
-<vue-json-to-csv 
-    :json-data="[ { name: 'Joe', surname: 'Roe' }, { name: 'John', surname: 'Doé' } ]"
-    :csv-title="'UnderReview'" >
-    <button> 
-      Download data
-    </button> 
-</vue-json-to-csv>
-
-      <highcharts class="chart" :options="chartOptions" :updateArgs="updateArgs"></highcharts>
-      
+    <h2><b>Under Review Summary</b></h2>
+    <hr />
+    <div><p>This report is refreshed every Monday afternoon. Last refreshed: {{ this.stats.Date }}</p>
+      <vue-json-to-csv 
+        :json-data="exportData"
+        :csv-title="'UnderReview'" >
+        <button type="button" class="btn btn-light">Download data</button>
+         
+      </vue-json-to-csv>
+      <br /><br />
     </div>
-    
-  </div>
+  
+    <div>
+      <h2>across all UK PSL</h2>
+      <div style="max-width: 310px;">
+        <table class="table table-bordered ">
+          <thead>
+              <tr>
+                  <th scope="col">under review</th>
+                  <th scope="col">not under review</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>{{ this.stats.underReviewTotal }} docs</td>
+                  <td>{{ this.stats.notUnderReviewTotal }} docs</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<div>
+  <h2>across individual practice areas</h2>
+  <p>Click on the bars below to expand the practice area.</p></div>
+  <highcharts class="chart" :options="chartOptions" :updateArgs="updateArgs"></highcharts>
+      
+</div>
 </template>
 
 <script>
   import axios from "axios";
-  //var Data = [153, 4, 0, 2, 2, 7, 22, 4, 17, 6, 1, 2, 0, 44, 0, 7, 0, 1, 1, 0, 5, 3, 1, 0, 0, 0, 3, 6, 0, 3, 0, 3, 0, 8, 1, 0];
-//const apples="[ { name: 'Joe', surname: 'Roe' }, { name: 'John', surname: 'Doé' } ]"
+  
   export default {
   data () {
   return {
+  exportData: [],
+  stats:
+    {
+      Date: '',
+      underReviewTotal: 0,
+      notUnderReviewTotal: 0
+    },
   title: '',
   chartType: 'Spline',
   seriesColor: '#6fcd98',
   colorInputIsSupported: null,
   animationDuration: 1000,
-  updateArgs: [true, true, {duration: 1000}],
+  updateArgs: [true, true, {duration: 1000}], 
   chartOptions: {
   chart: {
   type: 'bar',
@@ -111,14 +135,21 @@
   
   },
   async mounted() {
-    const { data } = await axios.get('http://hutchida.com/lnpsl/ContentHub/json/data.json')
-    this.todosList = [...data].slice(0, 10)
-    //this.chartOptions.series.data = data.map(item => item.Total)
-
-    this.chartOptions.series[0].data  = data.map(item => item.Total)
-    this.chartOptions.xAxis.categories = data.map(item => item.PA)
+    const { data : underReviewMainChartData } = await axios.get('http://hutchida.com/lnpsl/ContentHub/json/underReviewMainChart.json')    
+    const { data : underReviewFullData } = await axios.get('http://hutchida.com/lnpsl/ContentHub/json/UR.json')
+    const { data : underReviewStats } = await axios.get('http://hutchida.com/lnpsl/ContentHub/json/underReviewStats.json')
     
-    //jsonData = [data]
+    this.chartOptions.series[0].data  = underReviewMainChartData.map(item => item.Total)
+    this.chartOptions.xAxis.categories = underReviewMainChartData.map(item => item.PA)
+
+    underReviewStats.forEach((x) => 
+    {
+      if (x.key == 'Date'){ this.stats.Date = x.value; }
+      if (x.key == 'underReviewTotal'){ this.stats.underReviewTotal = x.value; }
+      if (x.key == 'notUnderReviewTotal'){ this.stats.notUnderReviewTotal = x.value; }  
+    })
+    
+    this.exportData = underReviewFullData
   }, 
   
   }
@@ -140,4 +171,8 @@
   .numberInput {
   width: 30px;
   }
+  .table-condensed {
+  font-size: 10px;
+  }
+    
 </style>

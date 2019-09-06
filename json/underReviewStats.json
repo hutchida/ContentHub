@@ -1,0 +1,14 @@
+[
+	{
+		"key": "Date",
+		"value": "02/09/2019"
+	},
+	{
+		"key": "underReviewTotal",
+		"value": 130
+	},
+	{
+		"key": "notUnderReviewTotal",
+		"value": 40000
+	}
+]
