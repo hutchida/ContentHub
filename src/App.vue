@@ -1,66 +1,66 @@
 <template>
   <div id="app">
-    <!-- <div class="logos">
-      <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
-        <img class="logo-vue" src="./assets/logo.png" alt="Vue Logo"> 
-    </div>-->
-    <h1>ContentHub</h1>
-    
-      <!-- <div class="button-grp">
-        <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Chart</button>
-          <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Stock Chart</button>
-            <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>
-      </div> -->
-      <keep-alive>
-        <component :is="currentView"></component>
-      </keep-alive>
+    <div class="logos">
+      <img class="logo-hc" src="./assets/contenthub_logo.png" alt="Contenthub Logo" />
+    </div>
+
+    <div class="button-grp">
+      <button
+        @click="select('Arbitration')"
+        :class="{btnActive: selected === 'Arbitration'}"
+      >Arbitration</button>
+      <button @click="select('Pensions')" :class="{btnActive: selected === 'Pensions'}">Pensions</button>
+      <app-pie id="$route.params.id"></app-pie>
+      <app-timeline></app-timeline>
+    </div>
+    <keep-alive>
+      <component :is="currentView"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-  import Chart from './components/Chart.vue'
-  import StockChart from './components/StockChart'
-  import MapChart from './components/MapChart'
-  
-  
-  
-  
-  export default {
-  name: 'app',
-  data () {
-  return {
-  selected: 'chart',
-  currentView: 'chart'
-  }
+const cat = $route.params.id;
+import Arbitration from "./components/Arbitration.vue";
+import Pie from "./components/pie.vue";
+import Timeline from "./components/timeline.vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      selected: "Arbitration",
+      currentView: "Arbitration"
+    };
   },
   components: {
-  chart: Chart,
-  stockChart: StockChart,
-  mapChart: MapChart
+    Arbitration: Arbitration,
+    "app-pie": Pie,
+    "app-timeline": Timeline
   },
   methods: {
-  activate (elem) {
-  this.selected = elem
-  },
-  handler () {
-  var args = arguments
-  for (var arg of args) {
-  if (arg instanceof Function) {
-  arg()
+    activate(elem) {
+      this.selected = elem;
+    },
+    handler() {
+      var args = arguments;
+      for (var arg of args) {
+        if (arg instanceof Function) {
+          arg();
+        }
+      }
+    },
+    select(elem) {
+      this.currentView = elem;
+      this.activate(elem);
+    }
   }
-  }
-  },
-  select (elem) {
-  this.currentView = elem
-  this.activate(elem)
-  }
-  }
-  }
+};
 </script>
 
 <style>
-  #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
@@ -68,47 +68,48 @@
   margin: 0 auto;
   margin-top: 60px;
   width: 70%;
-  }
-  h1, h2 {
+}
+h1,
+h2 {
   font-weight: normal;
-  }
-  ul {
+}
+ul {
   list-style-type: none;
   padding: 0;
-  }
-  li {
+}
+li {
   display: inline-block;
   margin: 0 10px;
-  }
-  a {
+}
+a {
   color: #42b983;
-  }
-  .row {
+}
+.row {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  }
-  .row > * {
+}
+.row > * {
   padding: 0 20px;
-  }
-  .logos {
+}
+.logos {
   margin: 0 auto;
-  width:50%;
-  }
-  .logo-hc {
+  width: 100%;
+}
+.logo-hc {
   width: 70%;
   height: auto;
-  }
-  .logo-vue {
+}
+.logo-vue {
   width: 15%;
   height: auto;
-  }
-  .button-grp {
+}
+.button-grp {
   margin: 20px 0;
-  }
-  button {
+}
+button {
   padding: 10px 20px;
   outline: none;
   background: #828ea0;
@@ -116,15 +117,15 @@
   font-size: 16px;
   margin: 5px;
   border: 0px;
-  }
-  button:hover {
+}
+button:hover {
   background: #a7aeb8;
   transition: background 0.2s;
-  }
-  button:active {
+}
+button:active {
   color: rgb(117, 117, 117);
-  }
-  .btnActive {
-  color: #6fcd98
-  }
+}
+.btnActive {
+  color: #6fcd98;
+}
 </style>
