@@ -12,7 +12,7 @@
     "api": "flask run"
   },
   "dependencies": {
-    "highcharts": "^7.1.2",
+    "highcharts": "^9.0.0",
     "highcharts-vue": "^1.3.5",
     "jquery": "^3.4.1",
     "vue": "^2.5.2",
